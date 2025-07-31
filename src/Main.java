@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static String author;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // KULLANICIDAN VERİ ALMAK İÇİN--
         Library library = new Library(); // KÜTÜPHANE NESNESİ OLUŞTUR--
@@ -16,10 +18,17 @@ public class Main {
             System.out.println("5. Kitap İade Et");
             System.out.println("6. Çıkış");
             System.out.println(); // BİR SATIR BOŞLUK BIRAKIR--
-            System.out.print("Seçiminiz: ");
 
-            int choice = scanner.nextInt(); // KULLANICI'NIN SEÇİMİNİ OKU--
+            System.out.print("Seçiminiz: ");
             scanner.nextLine(); // BOŞ SATIR TEMİZLE 'nextINT 'den sonra nextLine şart'--
+
+            int choice;
+            try { // MENÜ SEÇİMİNİ HATALARDAN KORUMAK İÇİN KULLANILIR
+                choice = Integer.parseInt(scanner.nextLine().trim()); // GİRİŞ SATIRINI OKUYUP TAMSAYIYA ÇEVİR--
+            } catch (NumberFormatException e) {
+                System.out.println("Lütfen Geçerli Bir Sayı Giriniz!"); // HATALI GİRİŞ MESAJ ÇIKTISI--
+                continue; // DÖNGÜ BAŞINA DÖN & TEKRAR MENÜYÜ GÖSTER
+            }
 
             switch (choice) {
                 case 1:
@@ -40,8 +49,8 @@ public class Main {
 
                 case 3:
                     System.out.print("Aranacak Başlık: ");
-                    String searcTitle = scanner.nextLine();
-                    library.searchByTitle(searcTitle); // BAŞLIĞI GÖRE ARA--
+                    String searchTitle = scanner.nextLine();
+                    library.searchByTitle(searchTitle); // BAŞLIĞI GÖRE ARA--
                     break;
 
                 case 4:
