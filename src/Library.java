@@ -11,18 +11,18 @@ public class Library {
 
     public void addBook(Book book) {
         books.add(book); // LİSTEYE KİTAP EKLER--
-        System.out.println("Kitap Başarıyla Eklendi.");
+        System.out.println("Kitap Başarıyla Eklendi!!");
     }
 
     public void displayBooks() {
         if (books.isEmpty()) {
-            System.out.println("Kütüphane Boş.");
+            System.out.println("Kütüphane Boş!!");
         } else {
             for (Book book : books) {
                 System.out.println("Başlık: " + book.getTitle() +
-                                   " | Yazar: " + book.getAuthor() +
-                                   " | ISBN: " + book.getIsbn() +
-                                   " | Durum: " + (book.isBorrowed() ? "Ödünç Alındı" : "Musait"));
+                        " | Yazar: " + book.getAuthor() +
+                        " | ISBN: " + book.getIsbn() +
+                        " | Durum: " + (book.isBorrowed() ? "Ödünç Alındı" : "Musait"));
             }
         }
     }
@@ -46,22 +46,22 @@ public class Library {
         for (Book book : books) {
             if (book.getIsbn().equals(isbn)) { // ISBN İLE EŞLEŞEN KİTAPLAR--
                 if (book.isBorrowed()) {
-                    System.out.println("Bu Kitap zaten Ödünç Alınmış.");
+                    System.out.println("Bu Kitap zaten Ödünç Alınmış!!");
                 } else {
                     book.borrowBook(); // KİTABI ÖDÜNÇ AL--
-                    System.out.println("Kitap Başarıyla Ödünç Alındı.");
+                    System.out.println("Kitap Başarıyla Ödünç Alındı!!");
                 }
                 return;
             }
         }
-        System.out.println("Bu ISBN Numarasına Sahip Kitap Bulunamadı.");
+        System.out.println("Bu ISBN Numarasına Sahip Kitap Bulunamadı!!");
     }
 
     public void returnBook(String isbn) {
         for (Book book : books) {
             if (book.getIsbn().equals(isbn)) {
                 if (!book.isBorrowed()) {
-                    System.out.println("Bu Kitap zaten Kütüphanede.");
+                    System.out.println("Bu Kitap zaten Kütüphanede!!");
                 } else {
                     book.returnBook(); // KİTABI İADE ET--
                     System.out.println("Kitap İade Edildi!!");
@@ -69,6 +69,16 @@ public class Library {
                 return;
             }
         }
-        System.out.println("Bu ISBN Numarasına Sahip Kitap Bulunamadı.");
+        System.out.println("Bu ISBN Numarasına Sahip Kitap Bulunamadı!!");
+    }
+
+    public boolean isBookExixsts(String title) {
+        for (Book book : books) { // KİTAP LİSTESİNDEKİ HER KİTABI GEZER--
+            if (book.getTitle().equalsIgnoreCase(title)) { // KİTAP İSMİ EŞLEŞİYORSA 'BÜYÜK & KÜÇÜK HARFE DUYARSIZ'--
+                return true; // KİTAP ZATEN VAR--
+            }
+        }
+        return false; // KİTAP YOK--
+
     }
 }

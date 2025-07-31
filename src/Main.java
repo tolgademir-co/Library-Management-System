@@ -17,12 +17,12 @@ public class Main {
             System.out.println("6. Çıkış");
             System.out.println(); // BİR SATIR BOŞLUK BIRAKIR--
             System.out.print("Seçiminiz: ");
+
             int choice = scanner.nextInt(); // KULLANICI'NIN SEÇİMİNİ OKU--
-            scanner.nextInt(); // BOŞ SATIR TEMİZLE 'NEXTINT SONRASI'--
+            scanner.nextLine(); // BOŞ SATIR TEMİZLE 'nextINT 'den sonra nextLine şart'--
 
             switch (choice) {
-                case 0:
-                    ;
+                case 1:
                     // KİTAP EKLE--
                     System.out.print("Kitap Başlığı: ");
                     String title = scanner.nextLine();
@@ -34,27 +34,29 @@ public class Main {
                     library.addBook(book);
                     break;
 
-                case 1:
-                    ;
+                case 2:
+                    library.displayBooks();
+                    break;
+
+                case 3:
                     System.out.print("Aranacak Başlık: ");
                     String searcTitle = scanner.nextLine();
                     library.searchByTitle(searcTitle); // BAŞLIĞI GÖRE ARA--
                     break;
 
-                case 2:
-                    ;
+                case 4:
                     System.out.print("Ödünç Alınacak Kitabın ISBN: ");
                     String borrowIsbn = scanner.nextLine();
                     library.borrowBook(borrowIsbn); // KİTAP ÖDÜNÇ AL--
                     break;
 
-                case 3:
+                case 5:
                     System.out.print("İade Edilicek Kitabın ISBN: ");
                     String returnIsbn = scanner.nextLine();
                     library.returnBook(returnIsbn); // KİTAP İADE ET--
                     break;
 
-                case 4:
+                case 6:
                     System.out.print("Kütüphane Sistemini Kullandığın için Teşekkürler!!");
                     return; // PROGRAMDAN ÇIKIŞ--
 
