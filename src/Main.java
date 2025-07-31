@@ -20,11 +20,11 @@ public class Main {
             System.out.println(); // BİR SATIR BOŞLUK BIRAKIR--
 
             System.out.print("Seçiminiz: ");
-            scanner.nextLine(); // BOŞ SATIR TEMİZLE 'nextINT 'den sonra nextLine şart'--
+            String input = scanner.nextLine(); // SEÇİMİ SATIR OLARAK AL 'TRY-CATCH METHODU İÇİN GEREKLİ'
 
             int choice;
             try { // MENÜ SEÇİMİNİ HATALARDAN KORUMAK İÇİN KULLANILIR
-                choice = Integer.parseInt(scanner.nextLine().trim()); // GİRİŞ SATIRINI OKUYUP TAMSAYIYA ÇEVİR--
+                choice = Integer.parseInt(input.trim()); // GİRİŞ SATIRINI OKUYUP TAMSAYIYA ÇEVİR--
             } catch (NumberFormatException e) {
                 System.out.println("Lütfen Geçerli Bir Sayı Giriniz!"); // HATALI GİRİŞ MESAJ ÇIKTISI--
                 continue; // DÖNGÜ BAŞINA DÖN & TEKRAR MENÜYÜ GÖSTER
@@ -34,43 +34,43 @@ public class Main {
                 case 1:
                     // KİTAP EKLE--
                     System.out.print("Kitap Başlığı: ");
-                    String title = scanner.nextLine();
+                    String title = scanner.nextLine(); // KİTAP BAŞLIĞINI GİR--
                     System.out.print("Yazar Adı: ");
-                    String author = scanner.nextLine();
+                    String author = scanner.nextLine(); // KİTAP YAZAR ADINI GİR--
                     System.out.print("ISBN: ");
-                    String isbn = scanner.nextLine();
-                    Book book = new Book(title, author, isbn);
-                    library.addBook(book);
-                    break;
+                    String isbn = scanner.nextLine(); // ISBN'Nİ GİR--
+                    Book book = new Book(title, author, isbn); // YENİ KİTAP OLUŞTUR--
+                    library.addBook(book); // KÜTÜPHANEYE EKLE--
+                    break; // BU CASE'İ BİTİRİR VE SWITCH BLOĞUNDAN ÇIKAR
 
-                case 2:
+                case 2: // TÜM KİTAPLARI LİSTELE--
                     library.displayBooks();
-                    break;
+                    break; // SWITCH BLOĞUNDAN ÇIKAR VE DÖNGÜ DEVAM EDER
 
-                case 3:
+                case 3: // BAŞLIĞA GÖRE ARAMA YAP--
                     System.out.print("Aranacak Başlık: ");
                     String searchTitle = scanner.nextLine();
                     library.searchByTitle(searchTitle); // BAŞLIĞI GÖRE ARA--
-                    break;
+                    break; // BU SEÇENEĞİ TAMAMLAR VE ANA MENÜYE DÖNER
 
-                case 4:
+                case 4: // KİTAP ÖDÜNÇ AL--
                     System.out.print("Ödünç Alınacak Kitabın ISBN: ");
                     String borrowIsbn = scanner.nextLine();
                     library.borrowBook(borrowIsbn); // KİTAP ÖDÜNÇ AL--
-                    break;
+                    break; // İŞLEM BİTER, DÖNGÜ YENİDEN BAŞLAR
 
-                case 5:
+                case 5: // KİTAP İADE ET--
                     System.out.print("İade Edilicek Kitabın ISBN: ");
                     String returnIsbn = scanner.nextLine();
                     library.returnBook(returnIsbn); // KİTAP İADE ET--
-                    break;
+                    break; // BU İŞLEM TAMAMLANDIKTAN SONRA MENÜ YENİDEN GÖSTERİLİR--
 
-                case 6:
+                case 6: // PROGRAMDAN ÇIKIŞ--
                     System.out.print("Kütüphane Sistemini Kullandığın için Teşekkürler!!");
-                    return; // PROGRAMDAN ÇIKIŞ--
+                    return;
 
-                default:
-                    System.out.println("Geçersiz Seçim. Tekrar Deneyiniz!!"); // HATALI GİRİŞ--
+                default: // GEÇERSİZ SEÇİM
+                    System.out.println("Geçersiz Seçim. Tekrar Deneyiniz!!");
 
             }
         }
