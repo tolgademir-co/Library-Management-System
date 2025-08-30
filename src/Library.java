@@ -63,8 +63,7 @@ public class Library { // KONSOL ÇIKTILARIN RENK KODLARI && BAŞARILAR 'YEŞİL
             }
             System.out.println("------------------------\n");
         } else {
-            final String ANSI_RESET = "\u001B[0m";
-            final String ANSI_RED = "\u001B[31m";
+
             System.out.println(ANSI_RED + " --No Book Found with This Title!!" + ANSI_RESET);
         }
     }
@@ -73,21 +72,15 @@ public class Library { // KONSOL ÇIKTILARIN RENK KODLARI && BAŞARILAR 'YEŞİL
         for (Book book : books) {
             if (book.getIsbn().equals(isbn)) { // ISBN İLE EŞLEŞEN KİTAPLAR--
                 if (book.isBorrowed()) {
-                    final String ANSI_RESET = "\u001B[0m";
-                    final String ANSI_RED = "\u001B[31m";
                     System.out.println(ANSI_RED + " --Book not found or already checked out!!" + ANSI_RESET);
                 } else {
                     book.borrowBook(); // KİTABI ÖDÜNÇ AL--
-                    final String ANSI_RESET = "\u001B[0m";
-                    final String ANSI_RED = "\u001B[31m";
                     System.out.println(ANSI_GREEN + " --Book checked out successfully!!" + ANSI_RESET);
                 }
 
                 return;
             }
         }
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_RED = "\u001B[31m";
         System.out.println(ANSI_RED + " --No Book Found with This ISBN Number!!" + ANSI_RESET);
     }
 
@@ -95,21 +88,15 @@ public class Library { // KONSOL ÇIKTILARIN RENK KODLARI && BAŞARILAR 'YEŞİL
         for (Book book : books) {
             if (book.getIsbn().equals(isbn)) {
                 if (!book.isBorrowed()) {
-                    final String ANSI_RESET = "\u001B[0m";
-                    final String ANSI_RED = "\u001B[31m";
                     System.out.println(ANSI_RED + " --This Book is Already in the Library!!" + ANSI_RESET);
                 } else {
                     book.returnBook(); // KİTABI İADE ET--
-                    final String ANSI_RESET = "\u001B[0m";
-                    final String ANSI_RED = "\u001B[31m";
                     System.out.println(ANSI_GREEN + " --Book returned successfully!!" + ANSI_RESET);
                 }
 
                 return;
             }
         }
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_RED = "\u001B[31m";
         System.out.println(ANSI_RED + " --No Book Found with This ISBN Number!!" + ANSI_RESET);
     }
 
